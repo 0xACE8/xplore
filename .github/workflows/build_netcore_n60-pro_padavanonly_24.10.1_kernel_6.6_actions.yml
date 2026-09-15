@@ -154,6 +154,9 @@ jobs:
       run: |
         df -hT /build
         git clone --depth 1 --single-branch $GIT_REPO_URL -b $GIT_HEAD_REF openwrt
+
+        rm -rf openwrt/package/network/services/dnsmasq
+        mv private_data/common/dnsmasq openwrt/package/network/services/dnsmasq
         
         # Remove China Mirrors (中国ソースの削除)
         ${{ env.REMOV_CN_SRC }}
