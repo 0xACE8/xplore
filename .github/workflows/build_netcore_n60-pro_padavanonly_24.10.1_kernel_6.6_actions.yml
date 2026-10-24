@@ -180,9 +180,12 @@ jobs:
       working-directory: ./openwrt
       run: |
         ./scripts/feeds update -a  >/dev/null 2>&1
+        echo 'feeds update 终了！'
         # packages lang update (rust and goland)
         ${{ env.LANGS_UPDATE }}
+        echo 'lang update 终了！'
         ./scripts/feeds install -a  >/dev/null 2>&1
+        echo 'lang install 终了！'
         # device patch
         ${{ env.PRIVATEPATCH }}/${{ env.TARGET_MODEL }}/${{ env.DEVICE_PATCH }}
 
